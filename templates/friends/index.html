@@ -1,0 +1,38 @@
+
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block link %}
+    <link rel="stylesheet" href="{% static 'friends/style.css' %}" />
+{% endblock link %}
+{% block title %}
+Find Friend
+{% endblock title %}
+
+{% block content %}
+{% include 'partials/nav.html' %}
+    <div class="container">
+      
+      <section id="friendlist">
+      {% if friend_list %}
+      {% for friend in friend_list %}
+      <div class="friendcard">
+          <img src="{{ friend.profilepic.url }}" alt="" />
+          <h3>{{friend.user.first_name}} {{friend.user.last_name}}</h3>
+          <p>@{{friend.user.username}}</p>
+          <p>Interested on: {{friend.interest}}</p>
+          <a href="{% url 'accounts:friendrequest' friend.user.id %}">Connect</a>
+        </div>
+      {% endfor %}
+      {% else %}
+      <h4> no data </h4>
+      {% endif %}
+      </section>
+    </div>
+    <footer>
+      <p>
+        All rights researved to &copy Wirion | <a href="">privacy policy</a>
+      </p>
+    </footer>
+{% endblock content %}

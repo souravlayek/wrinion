@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        {% block link %}
+    {% endblock link %}
+    <link rel="stylesheet" href="{% static 'main.css' %}">
+    <title>Wrinion | {% block title %}
+    {% endblock title %}</title>
+
+</head>
+<body>
+    {% block content %}
+    {% endblock content %}
+    {% block script %}
+    {% endblock script %}
+     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+{% comment %} <script src="//cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+<script src="//stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script> {% endcomment %}
+
+</body>
+</html>

@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+friends
+{% endblock title %}
+
+{% block content %}
+<button><a href="{% url 'accounts:requestslist' %}">request</a></button>
+<button><a href="{% url 'accounts:myfriends' %}">myfriends</a></button>
+{% for i in friend_list %}
+<h4>{{ i }}</h4><button><a href="{% url 'accounts:friendapprove' i.id %}">Connect</a></button>
+{% endfor %}
+{% endblock content %}

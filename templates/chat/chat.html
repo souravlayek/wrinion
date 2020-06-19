@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="style.css" />
+    <title>Chat</title>
+  </head>
+  <body>
+    <nav>
+      <div class="logo">
+        <img class="ham" src="../asset/ham.svg" alt="" />
+        <img src="../logo.svg" alt="" />
+      </div>
+      <div class="search">
+        <input type="text" placeholder="Search.." /><a href=""
+          ><img src="../asset/search-24px (1).svg" alt=""
+        /></a>
+      </div>
+      <div class="navitem">
+        <div class="navlink">
+          <a href=""><img src="../asset/explore-24px.svg" alt="" /></a>
+        </div>
+        <div class="navlink">
+          <a href=""
+            ><img src="../asset/notifications_active-24px.svg" alt=""
+          /></a>
+        </div>
+        <div class="navlink">
+          <a href=""><img src="../asset/sms-24px.svg" alt="" /></a>
+        </div>
+        <div class="profile">
+          <img src="../asset/profilepic.png" alt="" />
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+      <div class="friend">
+        <div class="card">
+          <div class="pic"><img src="../asset/profilepic.png" alt="" /></div>
+          <div class="details">
+            <p class="name">Name Title</p>
+            <p class="lastchat">Lorem, ipsum dolor.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="pic"><img src="../asset/profilepic.png" alt="" /></div>
+          <div class="details">
+            <p class="name">Name Title</p>
+            <p class="lastchat">Lorem, ipsum dolor.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="pic"><img src="../asset/profilepic.png" alt="" /></div>
+          <div class="details">
+            <p class="name">Name Title</p>
+            <p class="lastchat">Lorem, ipsum dolor.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="pic"><img src="../asset/profilepic.png" alt="" /></div>
+          <div class="details">
+            <p class="name">Name Title</p>
+            <p class="lastchat">Lorem, ipsum dolor.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="pic"><img src="../asset/profilepic.png" alt="" /></div>
+          <div class="details">
+            <p class="name">Name Title</p>
+            <p class="lastchat">Lorem, ipsum dolor.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="pic"><img src="../asset/profilepic.png" alt="" /></div>
+          <div class="details">
+            <p class="name">Name Title</p>
+            <p class="lastchat">Lorem, ipsum dolor.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="pic"><img src="../asset/profilepic.png" alt="" /></div>
+          <div class="details">
+            <p class="name">Name Title</p>
+            <p class="lastchat">Lorem, ipsum dolor.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="pic"><img src="../asset/profilepic.png" alt="" /></div>
+          <div class="details">
+            <p class="name">Name Title</p>
+            <p class="lastchat">Lorem, ipsum dolor.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="pic"><img src="../asset/profilepic.png" alt="" /></div>
+          <div class="details">
+            <p class="name">Name Title</p>
+            <p class="lastchat">Lorem, ipsum dolor.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="pic"><img src="../asset/profilepic.png" alt="" /></div>
+          <div class="details">
+            <p class="name">Name Title</p>
+            <p class="lastchat">Lorem, ipsum dolor.</p>
+          </div>
+        </div>
+      </div>
+      <div class="chatwindow">
+        <div class="chats">
+          <p class="text in">
+            Sample text 1
+            <span class="time">12.30pm</span>
+          </p>
+          <p class="text rp">
+            Sample text 1
+            <span class="time">12.31pm</span>
+          </p>
+        </div>
+        <div class="send">
+          <form action="">
+            <input type="text" />
+            <button type="submit">
+              <img class="send_icon" src="../asset/send-24px.svg" alt="" />
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.js"
+      integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      $(".ham").click(function () {
+        $(".friend").toggleClass("active_frnd");
+      });
+    </script>
+  </body>
+</html>

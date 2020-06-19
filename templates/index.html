@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+Home page
+{% endblock title %}
+{% block content %}
+<h4>{{user.username}}</h4>
+{% if user.is_authenticated %}
+<button><a href="{% url 'logout' %}">logout</a></button>
+{% else %}
+<button><a href="{% url 'login' %}">login</a></button>
+{% endif %}
+
+<button><a href="{% url 'accounts:signup' %}">Signup</a></button>
+<button><a href="{% url 'accounts:findfriend' %}">friendlist</a></button>
+<ul>
+{% if friend_list %}
+{% for i in friend_list %}
+<li>
+<div>
+<h3>{{ i }}</h3>
+
+</div>
+</li>
+{% endfor %}
+</ul>
+{% else %}
+<h4>empty</h4>
+{% endif %}
+
+{% endblock content %}

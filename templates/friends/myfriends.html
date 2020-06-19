@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block link %}
+<link rel="stylesheet" href="{% static 'friends/style.css' %}">
+{% endblock link %}
+{% block title %}
+My Friends
+{% endblock title %}
+{% block content %}
+      {% include 'partials/nav.html' %}
+<div class="container">
+
+      <section id="friendlist">
+      {% if friend_list %}
+      {% for friend in friend_list %}
+      {% if friend.first_user.id is user.id %}
+      <div class="friendcard">
+          <img src="{{ friend.second_user.profile.profilepic.url }}" alt="" />
+          <h3>{{friend.second_user.first_name}} {{friend.second_user.last_name}}</h3>
+          <p>@{{friend.second_user.username}}</p>
+          <p>Interested on: {{friend.second_user.profile.interest}}</p>
+          <a href="/messages/{{friend.second_user.username}}">Start Chat</a>
+        </div>
+      {% else %}
+      <div class="friendcard">
+          <img src="{{ friend.first_user.profile.profilepic.url }}" alt="" />
+          <h3>{{friend.first_user.first_name}} {{friend.first_user.last_name}}</h3>
+          <p>@{{friend.first_user.username}}</p>
+          <p>Interested on: {{friend.first_user.profile.interest}}</p>
+          <a href="/messages/{{friend.first_user.username}}">Start Chat</a>
+        </div>
+      {% endif %}
+      {% endfor %}
+      {% else %}
+      <h4> no request here</h4>
+      {% endif %}
+      </section>
+    </div>
+{% endblock content %}

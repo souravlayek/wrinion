@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+friends
+{% endblock title %}
+
+{% block content %}
+<h4>{{ user }}</h4>
+<button><a href="{% url 'accounts:requestslist' %}">request</a></button>
+{% for i in friend_list %}
+    {% if i.second_user.id is not user.id %}
+        <h4>{{ i.second_user }}</h4><button><a href="/messages/{{i.second_user.username}}">Chat</a></button>
+    {% else %}
+        <h4>{{ i.first_user }}</h4><button><a href="/messages/{{i.first_user.username}}">Chat</a></button>
+    {% endif %}
+{% endfor %}
+{% endblock content %}

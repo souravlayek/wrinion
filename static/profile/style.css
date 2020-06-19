@@ -1,0 +1,91 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.container {
+  margin-top: 10px;
+  display: flex;
+  width: 30em;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #2a03386e;
+  border-radius: 10px;
+  box-shadow: 10px 10px 10px #2a03386e;
+}
+.container form {
+  display: flex;
+  width: 80%;
+  flex-direction: column;
+}
+.container form input,
+select {
+  margin-bottom: 20px;
+  font-size: 1rem;
+  padding: 0.5rem;
+  border-radius: 6px;
+  border: none;
+  /* background-color: rgb(199, 194, 194); */
+  border: 1px solid black;
+}
+.container form input[type="submit"] {
+  background-image: linear-gradient(120deg, #b611f1, #00f0ff);
+  align-self: center;
+  border: none;
+  color: white;
+  padding-left: 60px;
+  padding-right: 60px;
+  cursor: pointer;
+}
+.searchint {
+  display: flex;
+  flex-direction: column;
+}
+.search_list {
+  box-sizing: border-box;
+  display: none;
+  overflow: scroll;
+  margin-top: -20px;
+  background-color: white;
+  height: 10rem;
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 5px;
+  box-shadow: 5px 5px 5px grey;
+}
+.active_search {
+  display: initial;
+}
+.item {
+  padding: 5px;
+  border-bottom: 1px solid grey;
+}
+.item:hover {
+  background-color: rgba(128, 128, 128, 0.438);
+}
+.profilepic {
+  width: 6rem;
+  height: 6rem;
+  border-radius: 50%;
+}
+.cta_btn {
+  background-image: linear-gradient(0.25turn, #b611f1, #00f0ff);
+  height: 1rem;
+  padding: 5px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-radius: 19px;
+  text-align: center;
+}
+
+.cta_btn:hover {
+  background-image: linear-gradient(-0.25turn, #b611f1, #00f0ff);
+}
+.cta_btn a {
+  text-decoration: none;
+  color: white;
+}

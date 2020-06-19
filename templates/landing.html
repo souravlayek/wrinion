@@ -1,0 +1,192 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&family=Source+Serif+Pro:wght@600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{% static 'landing/main.css' %}" />
+
+    <title>Landing</title>
+  </head>
+  <body>
+    <nav>
+      <div class="logo"><img src="{% static 'asset/logo.svg' %}" alt="logo" /></div>
+      <div class="navlink">
+        <div class="navlinkitem">
+          <a href="#hero" class="sliding-link">Home</a>
+        </div>
+        <div class="navlinkitem">
+          <a class="sliding-link" href="#services">About</a>
+        </div>
+        <div class="navlinkitem">
+          <a href="#" class="contact_modal">Contact Us</a>
+        </div>
+      </div>
+      <div class="cta_btn joinus_btn"><a href="{% url 'accounts:signup' %}">Join Us</a></div>
+    </nav>
+    <!-- modal -->
+    <div class="modal">
+      <div class="modal_inner">
+        <div>
+          <h4>Contact Us</h4>
+          <form action="" class="contact_form">
+            <label for="name">Your Name: </label>
+            <input type="text" name="name" id="name" />
+            <label for="email">Your Email: </label>
+            <input type="text" name="email" id="email" />
+            <label for="message">Message: </label>
+            <textarea name="message" id="message" cols="10" rows="8"></textarea>
+            <input type="submit" value="Send" class="submit" />
+          </form>
+        </div>
+        <span class="close_modal">X</span>
+      </div>
+    </div>
+    <!-- modal end -->
+    <section id="hero">
+      <div class="heroimg">
+        <img src="{% static 'asset/undraw_Group_chat_unwm.svg' %}" alt="" />
+      </div>
+
+      <div class="text">
+        <div class="tagline">
+          <p>All you need is <span>passion.</span></p>
+        </div>
+        <div class="small_tag">
+          <p>
+            to start communicating with people <br />
+            who shares the same passion as you join us.
+          </p>
+        </div>
+        <div class="cta_btn get_started_btn">
+          <a class="sliding-link" href="#services">Get Started</a>
+        </div>
+      </div>
+    </section>
+    <section id="services">
+      <h3 class="service_heading">ABOUT US</h3>
+      <p>
+        A platform where we can improve your knowledge and create new friendship
+        by chatting with people as like you
+      </p>
+      <div class="services_inner">
+        <div class="cards">
+          <div class="card">
+            <h4>A suggestion of friends who share the same passion as you</h4>
+          </div>
+          <div class="card"><h4>a network for passionate people</h4></div>
+          <div class="card">
+            <h4>a selection of more than 60 passion to choose from</h4>
+          </div>
+        </div>
+        <div class="form">
+          <h3>Register Here</h3>
+          <form action="{% url 'accounts:signup' %}" method="POST">
+          {% csrf_token %}
+            <label for="username">Username:</label>
+            <input type="text" name="username" id="username" />
+            <label for="firstname">First Name:</label>
+            <input type="text" name="first_name" id="firstname" />
+            <label for="lastname">Last Name:</label>
+            <input type="text" name="last_name" id="lastname" />
+
+            
+            <label for="emailid">Email Id:</label>
+            <input type="email" name="email" id="emailid" />
+            <label for="password1">Password:</label>
+            <input
+              type="password"
+              name="password1"
+              id="password1"
+              autocomplete="on"
+            />
+            <label for="password2">Confirm Password:</label>
+            <input
+              type="password"
+              name="password2"
+              id="password2"
+              autocomplete="on"
+            />
+            <input type="submit" value="Register" class="cta_btn" />
+          </form>
+        </div>
+      </div>
+    </section>
+    <footer>
+      <div class="footer_main">
+        <div class="logo">
+          <div class="logo">
+            <img src="{% static 'asset/logo.svg' %}" alt="logo" />
+          </div>
+          <div class="tag">
+            All You Need Is Passion.
+          </div>
+        </div>
+        <div class="links">
+          <div class="navigation">
+            <h4 class="linkhead">Navigation</h4>
+            <a href="">Home</a>
+            <a href="">About Us</a>
+            <a href="">Contact Us</a>
+          </div>
+          <div class="privacy">
+            <h4 class="linkhead">Privacy</h4>
+            <a href="">Terms</a>
+            <a href="">Condition</a>
+            <a href="">Policy</a>
+          </div>
+        </div>
+      </div>
+      <div class="social">
+        <div class="facebook">
+          <a href=""><img src="{% static 'asset/social-media.svg' %}" alt="" /></a>
+        </div>
+        <div class="twitter">
+          <a href=""><img src="{% static 'asset/social-mediat.svg' %}" alt="" /></a>
+        </div>
+      </div>
+      <div class="copy">
+        <p>All rights researved to &copy Wirion</p>
+        <a href="">privacy policy</a>
+      </div>
+    </footer>
+    <div class="buttom_nav">
+      <div class="home">
+        <img src="{% static 'asset/web.svg' %}" alt="" />
+        <a href="#hero" class="sliding-link">Home</a>
+      </div>
+      <div class="about">
+        <img src="{% static 'asset/men.svg' %}" alt="" />
+        <a class="sliding-link" href="#services">About</a>
+      </div>
+      <div class="contact">
+        <img src="{% static 'asset/communications.svg' %}" alt="" />
+        <a href="#" class="contact_modal">Contact Us</a>
+      </div>
+    </div>
+
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.js"
+      integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      $(".sliding-link").click(function (e) {
+        e.preventDefault();
+        var aid = $(this).attr("href");
+        $("html,body").animate({ scrollTop: $(aid).offset().top }, 800);
+      });
+      // function for modal
+      $(".contact_modal").click(function () {
+        $(".modal").addClass("modal_active");
+      });
+      $(".close_modal").click(function () {
+        $(".modal").removeClass("modal_active");
+      });
+    </script>
+  </body>
+</html>

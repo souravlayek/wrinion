@@ -1,0 +1,33 @@
+     {% load static %}
+      <nav>
+        <div class="logo">
+          <a href=""><img src="{% static 'asset/logo.svg' %}" alt="" /></a>
+        </div>
+        {% comment %} <div class="search">
+          <input type="text" placeholder="Search.." /><a href=""
+            ><img src="{% static 'asset/search-24px (1).svg' %}" alt=""
+          /></a>
+        </div> {% endcomment %}
+        <div class="navitem">
+          <div class="navlink">
+            <a href="{% url 'accounts:home' %}"><img src="{% static 'asset/person_add-24px.svg' %}" alt="" /></a>
+          </div>
+          <div class="navlink">
+            <a href="{% url 'accounts:requestslist' %}"
+              ><img src="{% static 'asset/people-24px.svg' %}" alt=""
+            /></a>
+          </div>
+          <div class="navlink">
+            <a href="{% url 'accounts:myfriends' %}"><img src="{% static 'asset/how_to_reg-24px.svg' %}" alt="" /></a>
+          </div>
+          {% if user.is_authenticated %}
+          <div class="profile">
+            <a href="{% url 'accounts:profile' %}"><img src="{% if user.profile %}{{ user.profile.profilepic.url }}{% else %}{% static 'asset/profilepic.png' %}{% endif %}" alt="" /></a>
+
+          </div>
+          {% else %}
+                    
+          <div class="cta_btn joinus_btn"><a href="{% url 'accounts:signup' %}">Join Us</a></div>
+          {% endif %}
+        </div>
+      </nav>

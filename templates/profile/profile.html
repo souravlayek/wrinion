@@ -1,0 +1,133 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block link %}
+<link rel="stylesheet" href="{% static 'profile/style.css' %}" />
+{% endblock link %}
+{% block title %}
+Update Profile
+{% endblock title %}
+
+{% block content %}
+{% include 'partials/nav.html' %}
+    <div class="container">
+      <h1>Update Profile</h1>
+      <form method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+        <div class="searchint">
+           <label for="searchchoice">Interested On:</label>
+          <input
+            type="text"
+            name="interest"
+            id="searchchoice"
+            autocomplete="off"
+            placeholder="Search Your Interest"
+          />  
+          <div class="search_list"></div>
+        </div>
+        {{ form.profilepic }}
+        <input type="submit" value="Update" />
+      </form>
+    </div>
+{% endblock content %} 
+{% block script %}
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.js"
+      integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      const p_list = [
+        "sports",
+        "busines",
+        "stock market",
+        "vegan",
+        "music",
+        "start up",
+        "economy",
+        "entrepreneur",
+        "movie",
+        "health",
+        "food",
+        "science",
+        "books",
+        "traveling",
+        "psychology",
+        "history",
+        "cooking",
+        "history",
+        "cooking",
+        "photography",
+        "fashion",
+        "writing",
+        "mathematics",
+        "design",
+        "philosophy",
+        "politics",
+        "marketing",
+        "tv shows",
+        "art",
+        "literature",
+        "education",
+        "journalism",
+        "technology",
+        "smartphones",
+        "internet",
+        "computer sciences",
+        "planes",
+        "space",
+        "future",
+        "vegetarian",
+        "tourism",
+        "sea",
+        "boat",
+        "teaching",
+        "meditation",
+        "leadership",
+        "nature",
+        "volunteering",
+        "knitting",
+        "collecting",
+        "playing an instrument",
+        "celebration",
+        "programming",
+        "gardening",
+        "animals",
+        "hiking",
+        "cleaning",
+        "editing",
+        "yoga",
+        "singing",
+        "smoking",
+        "alcohol",
+        "gaming",
+        "patiserie",
+        "home automation",
+        "car",
+        "healthy eating",
+        "robots",
+        "money",
+      ];
+      $("#searchchoice").on("input", function (e) {
+        if (e.target.value.length !== 0) {
+          $(".search_list").addClass("active_search");
+        } else {
+          $(".search_list").removeClass("active_search");
+        }
+        const val = $("#searchchoice")[0].value;
+        const items = p_list.filter((item) => item.startsWith(val));
+        $(".search_list").empty();
+        for (let index = 0; index < items.length; index++) {
+          const element = items[index];
+
+          $(".search_list").append(
+            `<div class="item" onclick='item_clicked("${element}")'>${element}</div>`
+          );
+        }
+      });
+
+      function item_clicked(event) {
+        $(".search_list").removeClass("active_search");
+        $("#searchchoice")[0].value = event;
+      }
+    </script>
+{% endblock script %}

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block link %}
+  <link rel="stylesheet" href="{% static 'registration/style.css' %}" />
+{% endblock link %}
+
+{% block title %}
+SignUp
+{% endblock title %}
+
+{% block content %}
+{% include 'partials/nav.html' %}
+<div class="container">
+      <h1>Create Account</h1>
+      <p>Enter your personal details to join us</p>
+      <form method="POST">
+      {% csrf_token %}
+      {{form}}
+      <input type="submit" value="Create Account" />
+      </form>
+      <p>Already Have an account? <a href="{% url 'login' %}">Log in</a></p>
+    </div>
+{% endblock content %}

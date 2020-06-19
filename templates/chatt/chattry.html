@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block link %}
+<link rel="stylesheet" href="{% static 'chat/main.css' %}">
+{% endblock link %}
+{% block content %}
+{% include 'partials/nav.html' %}
+
+<div class="chatwindow">
+    <div id='chat-items' class="chats">
+        {% for chat in object.chatmessage_set.all %}
+            {% if chat.user.id is user.id %}
+                <p class="text rp">
+                    {{chat.message}}
+                    <span class="time">12.30pm</span>
+                </p>
+            {% else %}
+                <p class="text in">
+                    {{chat.message}}
+                    <span class="time">12.31pm</span>
+                </p>
+            {% endif %}
+
+        {% endfor %}
+    </div>
+    <div class="send">
+      <form id='form' method='POST'> {% csrf_token %}
+        <input type="hidden" id="me" value = '{{user.username}}'>
+          <input type="text" name="message" id="id_message" required />
+          <button class="btn-grad" type="submit">
+            <img class="send_icon" src="{% static 'asset/send-24px.svg' %}" alt="" />
+          </button>
+        </form>
+    </div>
+</div>
+{% endblock content %}
+{% block script %}
+<script
+    src="https://code.jquery.com/jquery-3.5.1.js"
+    integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+    crossorigin="anonymous"
+></script>
+<script>
+    $(".ham").click(function () {
+      console.log("inham")
+      $(".friend").toggleClass("active_frnd");
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/reconnecting-websocket/1.0.0/reconnecting-websocket.js" integrity="sha256-IxGLmHPQulZvYG3Kon9cB4ssL2JZ6EcP+nGHURmJe10=" crossorigin="anonymous"></script>
+<script src="//code.jquery.com/jquery-3.3.1.min.js"></script> 
+<script>
+// websocket scripts
+    var chatHistory = document.querySelector(".chats");
+    chatHistory.scrollTop = chatHistory.scrollHeight;
+    var loc = window.location
+    var formData = $('#form')
+    var msgInput = $('#id_message')
+    var chatHolder = $('#chat-items')
+    var me = $('#me').val()
+    console.log(formData,msgInput,chatHolder)
+    var wsStart = 'ws://'
+    if(loc.protocol == 'https:'){
+        wsStart = 'wss://'
+    }
+    var endpoint = wsStart + window.location.host + window.location.pathname
+    var socket = new ReconnectingWebSocket(endpoint)
+    socket.onmessage = function(e){
+        //console.log("message",e)
+        var chatDataMsg = JSON.parse(e.data)
+        let class_text = ""
+        //(chatDataMsg.username === me) ? class_text = "text rp" :  class_text = "text in" 
+        if (chatDataMsg.username === me) {
+          class_text = "text rp";
+        }
+        else{
+          class_text = "text in" ;
+        }
+        let chattext = `<p class="${class_text}">
+            ${chatDataMsg.message}
+            <span class="time">12.30pm</span>
+          </p>`
+        chatHolder.append(chattext)
+        chatHistory.scrollTop = chatHistory.scrollHeight;
+
+    }
+    socket.onopen = function(e){
+        console.log("open",e)
+        formData.submit(function(event){
+            event.preventDefault()
+            var msgText = msgInput.val()
+            // chatHolder.append("<li>"+ msgText + " via " + me +"</li>")
+            var finalData = {
+                'message': msgText
+            }
+            socket.send(JSON.stringify(finalData))
+            formData[0].reset()
+        }) 
+    }
+    socket.onerror = function(e){
+        console.log("error",e) 
+    }
+    socket.onclose = function(e){
+        console.log("close",e) 
+    }
+</script>
+
+{% endblock script %}

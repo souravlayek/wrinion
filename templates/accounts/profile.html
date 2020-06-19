@@ -1,0 +1,23 @@
+{% extends 'base.html' %} {% load static %}
+{% block title %}
+Profile
+{% endblock title %}
+{% block content %}
+    <div class="container login-container">
+        <h2 class="heading font-weight-light text-center">Your Profile</h2>
+    </div>
+    {% if not profileupdated %}
+    <div class="container w-25 card p-4 mt-4">
+        <form action="" method="POST" enctype="multipart/form-data">
+            {% csrf_token %} {{form}}
+            <input
+                type="submit"
+                value="Update"
+                class="w-100 text-white text-center my-2 btn btn-info"
+            />
+        </form>
+    </div>
+    {% else %}
+    {% include 'accounts/profiledetails.html' %}
+    {% endif %}
+{% endblock content %}

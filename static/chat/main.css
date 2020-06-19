@@ -1,0 +1,71 @@
+body {
+}
+.chatwindow {
+  background-color: rgb(214, 214, 214);
+  margin-top: 20px;
+  /* height: 90vh; */
+}
+.chats {
+  height: 80vh;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  padding-left: 0.8rem;
+  padding-right: 0.8rem;
+  margin-bottom: 50px;
+}
+/* text rp */
+.text {
+  width: fit-content;
+  padding: 5px;
+  padding-right: 20px;
+  padding-left: 20px;
+  border-radius: 5px 5px 5px 10px;
+  box-shadow: 5px 5px 5px grey;
+  max-width: 30%;
+}
+.rp {
+  background-color: #00d9ff;
+  align-self: flex-end;
+}
+.in {
+  background-color: #de11f1;
+}
+.send {
+  position: fixed;
+  bottom: 16px;
+}
+.send form {
+  width: 100vw;
+  display: flex;
+  margin-bottom: 5px;
+  margin-top: 5px;
+  justify-content: center;
+}
+.send form input[type="text"] {
+  margin-right: 5px;
+  padding: 4px;
+  width: 80%;
+  border-radius: 20px;
+  border: 1px solid rgba(128, 128, 128, 0.383);
+  outline: none;
+  padding-left: 1.2rem;
+  padding-right: 1.5rem;
+  font-weight: 400;
+  font-size: 1.2rem;
+}
+.send form button {
+  /* background-color: #f111de; */
+  border: 1px solid rgba(128, 128, 128, 0.397);
+  padding-left: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+/* #b611f1, #00f0ff */
+.btn-grad {
+  background-image: linear-gradient(120deg, #00f0ff, #b611f1);
+}
+.btn-grad:hover {
+  background-position: right center;
+}

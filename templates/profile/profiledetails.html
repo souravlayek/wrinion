@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block link %} 
+<link rel="stylesheet" href="{% static 'profile/style.css' %}" />
+{% endblock link %}
+{% block title %}
+Profile
+{% endblock title %} 
+
+{% block content %}
+{% include 'partials/nav.html' %}
+<div class="container">
+      <h1>Your Profile</h1>
+      <img class="profilepic" src="{{ profile.profilepic.url}}" alt="profile picture">
+      <h4>@{{profile.user.username}} | {{profile.user.email}}</h4>
+      <h3>{{ profile.user.first_name }} {{profile.user.last_name}}</h3>
+      <h3>Interested on : {{profile.interest}}</h3>
+      <br>
+                
+      <div class="cta_btn"><a href="{% url 'logout' %}">logout</a></div>
+      <br>
+    </div>
+{% endblock content %}
