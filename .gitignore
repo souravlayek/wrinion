@@ -1,3 +1,4 @@
 db.sqllite3/
 media/
 .vscode/
+*/migrations/
